@@ -10,93 +10,55 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 html,body{overflow-x:hidden;width:100%;position:relative;}
 :root{
-  --navy:#042C53;
-  --navy-mid:#185FA5;
-  --navy-light:#B5D4F4;
-  --navy-pale:#E6F1FB;
-  --green:#0F6E56;
-  --green-pale:#E1F5EE;
-  --red:#A32D2D;
-  --red-pale:#FCEBEB;
-  --amber:#854F0B;
-  --pink:#993556;
-  --purple:#534AB7;
-  --coral:#D85A30;
-  --rose:#D4537E;
-  --gray:#888780;
-  --bg:#F8F9FB;
-  --card:#FFFFFF;
-  --border:#E2E6EB;
-  --text:#1A1A2E;
-  --text2:#6B7280;
-  --text3:#9CA3AF;
+  --navy:#042C53;--navy-mid:#185FA5;--navy-light:#B5D4F4;--navy-pale:#E6F1FB;
+  --green:#0F6E56;--green-pale:#E1F5EE;--red:#A32D2D;--red-pale:#FCEBEB;
+  --bg:#F8F9FB;--card:#FFFFFF;--border:#E2E6EB;--text:#1A1A2E;--text2:#6B7280;
 }
-body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;max-width:480px;margin:0 auto;position:relative;}
-
-/* ===== HEADER ===== */
+body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;max-width:480px;margin:0 auto;}
 .app-header{background:var(--navy);padding:48px 16px 16px;position:sticky;top:0;z-index:100;}
 .app-header h1{font-size:13px;color:var(--navy-light);font-weight:400;margin-bottom:4px;}
 .header-amount{font-size:28px;font-weight:600;color:#fff;letter-spacing:-0.5px;}
 .header-sub{display:flex;gap:16px;margin-top:6px;}
 .header-sub span{font-size:12px;color:var(--navy-light);}
 .header-sub b{color:#fff;font-weight:500;}
-
-/* ===== NAV ===== */
 .bottom-nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:var(--navy);display:flex;z-index:200;padding-bottom:env(safe-area-inset-bottom);}
-.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px 8px;font-size:10px;color:var(--navy-light);cursor:pointer;border:none;background:none;gap:3px;}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 2px 8px;font-size:9px;color:var(--navy-light);cursor:pointer;border:none;background:none;gap:3px;}
 .nav-item.active{color:#fff;}
-.nav-item svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
-
-/* ===== SCREEN ===== */
-.screen{display:none;padding:12px 12px 90px;}
+.nav-item svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.screen{display:none;padding:12px 12px 100px;}
 .screen.active{display:block;}
-
-/* ===== CARDS ===== */
 .card{background:var(--card);border-radius:14px;border:1px solid var(--border);padding:14px;margin-bottom:12px;}
 .card-title{font-size:12px;color:var(--text2);font-weight:500;margin-bottom:10px;}
 .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
 .stat-box{background:var(--bg);border-radius:10px;padding:10px 12px;}
 .stat-label{font-size:11px;color:var(--text2);margin-bottom:3px;}
 .stat-val{font-size:17px;font-weight:600;}
-
-/* ===== TRANSACTIONS ===== */
 .tx-group-label{font-size:11px;color:var(--text2);font-weight:500;padding:10px 0 4px;}
-.tx-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);}
+.tx-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer;}
 .tx-item:last-child{border-bottom:none;}
 .tx-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
 .tx-info{flex:1;min-width:0;}
 .tx-name{font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.tx-memo{font-size:11px;color:var(--text2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.tx-memo{font-size:11px;color:var(--text2);}
 .tx-amount{font-size:14px;font-weight:600;flex-shrink:0;}
 .tx-expense{color:var(--red);}
 .tx-income{color:var(--green);}
-
-/* ===== TABS ===== */
-.tab-bar{display:flex;background:var(--navy);border-bottom:1px solid rgba(255,255,255,0.1);width:100%;}
+.tab-bar{display:flex;background:var(--navy);width:100%;}
 .tab-btn{flex:1;padding:14px;text-align:center;font-size:14px;color:var(--navy-light);cursor:pointer;border:none;background:none;font-family:inherit;}
 .tab-btn.active{color:#fff;border-bottom:2px solid var(--navy-light);font-weight:500;}
-
-/* ===== FORM ===== */
 .form-section{margin-bottom:14px;}
 .form-label{font-size:12px;color:var(--text2);font-weight:500;display:block;margin-bottom:6px;}
-.form-input{width:100%;max-width:100%;min-width:0;border:1px solid var(--border);border-radius:10px;padding:11px 14px;font-size:16px;font-family:inherit;background:var(--card);color:var(--text);outline:none;-webkit-appearance:none;appearance:none;box-sizing:border-box;}
+.form-input{width:100%;max-width:100%;border:1px solid var(--border);border-radius:10px;padding:11px 14px;font-size:16px;font-family:inherit;background:var(--card);color:var(--text);outline:none;-webkit-appearance:none;appearance:none;}
 .form-input:focus{border-color:var(--navy-mid);}
-.form-input[type="date"]{-webkit-appearance:none;appearance:none;display:block;width:100%;max-width:100%;}
-.amount-input{font-size:22px;font-weight:600;letter-spacing:-0.5px;}
+.form-input[type="date"]{display:block;width:100%;}
+.amount-input{font-size:22px;font-weight:600;}
 .cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;}
-.cat-btn{padding:10px 8px;border-radius:10px;border:1px solid var(--border);background:var(--card);font-size:13px;font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:6px;color:var(--text);}
+.cat-btn{padding:10px 8px;border-radius:10px;border:1px solid var(--border);background:var(--card);font-size:12px;font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:6px;color:var(--text);}
 .cat-btn.selected{background:var(--navy);color:#fff;border-color:var(--navy);}
-.cat-icon{font-size:16px;}
 .submit-btn{width:100%;padding:14px;background:var(--navy);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:600;font-family:inherit;cursor:pointer;margin-top:8px;}
-.submit-btn:active{opacity:0.85;}
-
-/* ===== GRAPH ===== */
-.graph-panels{display:flex;gap:10px;}
-.graph-panel{flex:1;min-width:0;}
-.panel-divider{width:1px;background:var(--border);align-self:stretch;}
 .panel-label{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;}
 .panel-total{font-size:16px;font-weight:600;color:var(--red);margin-bottom:10px;}
-.month-select{width:100%;border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:13px;background:var(--card);color:var(--text);margin-bottom:8px;font-family:inherit;}
+.month-select{width:auto;border:1px solid var(--border);border-radius:8px;padding:5px 10px;font-size:13px;background:var(--card);color:var(--text);font-family:inherit;}
 .bar-row{margin-bottom:7px;}
 .bar-row-label{display:flex;justify-content:space-between;font-size:11px;color:var(--text2);margin-bottom:3px;}
 .bar-bg{background:var(--bg);border-radius:2px;height:6px;}
@@ -104,128 +66,110 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP'
 .legend-list{display:flex;flex-direction:column;gap:5px;}
 .legend-row{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text);}
 .legend-dot{width:9px;height:9px;border-radius:2px;flex-shrink:0;}
-.chart-wrap{position:relative;margin:0 auto 10px;}
 .graph-section-title{font-size:11px;font-weight:600;color:var(--text2);letter-spacing:0.04em;margin:14px 0 8px;padding-top:14px;border-top:1px solid var(--border);}
 .donut-row{display:flex;gap:12px;align-items:center;}
-.donut-left{flex-shrink:0;}
-.donut-right{flex:1;min-width:0;}
-
-/* ===== BUDGET ===== */
-.budget-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
-.budget-name{font-size:14px;font-weight:500;}
-.budget-nums{font-size:12px;color:var(--text2);}
-.budget-nums.over{color:var(--red);font-weight:600;}
-.budget-bar-bg{background:var(--bg);border-radius:3px;height:7px;}
-.budget-bar-fill{height:7px;border-radius:3px;transition:width 0.5s;}
-.budget-item{padding:12px 0;border-bottom:1px solid var(--border);}
-.budget-item:last-child{border-bottom:none;}
-.edit-budget-btn{width:100%;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;cursor:pointer;color:var(--text);margin-top:8px;}
-
-/* ===== HISTORY ===== */
-.hist-item{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--border);cursor:pointer;}
-.hist-item:last-child{border-bottom:none;}
-.hist-actions{display:none;padding:0 0 10px;gap:8px;}
-.hist-actions.show{display:flex;}
-.hist-item.open{background:var(--bg);margin:0 -14px;padding-left:14px;padding-right:14px;}
-.action-btn{flex:1;padding:9px 0;border-radius:9px;font-size:13px;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;font-weight:500;}
-.action-btn.edit-btn{background:var(--navy-pale);color:#0C447C;border:1px solid var(--navy-light);}
-.action-btn.del-btn{background:var(--red-pale);color:var(--red);border:1px solid #F7C1C1;}
-.hist-actions-wrap{display:none;padding:0 14px 10px;gap:8px;background:var(--bg);}
-.hist-actions-wrap.show{display:flex;}
-
-/* ===== MODAL ===== */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:300;align-items:flex-end;justify-content:center;}
-.modal-overlay.show{display:flex;}
-.modal{background:var(--card);border-radius:20px 20px 0 0;padding:20px 16px 32px;width:100%;max-width:480px;margin:0 auto;max-height:85vh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
-.modal-title{font-size:16px;font-weight:600;margin-bottom:16px;}
-.modal-close{float:right;background:none;border:none;font-size:20px;color:var(--text2);cursor:pointer;padding:0;}
-.modal-submit{width:100%;padding:13px;background:var(--navy);color:#fff;border:none;border-radius:11px;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer;margin-top:12px;}
-
-/* ===== TOAST ===== */
-.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:10px 20px;border-radius:20px;font-size:13px;z-index:400;opacity:0;transition:opacity 0.3s;pointer-events:none;}
-.toast.show{opacity:1;}
-
-/* ===== EMPTY STATE ===== */
-.empty{text-align:center;padding:40px 20px;color:var(--text2);}
-.empty-icon{font-size:48px;margin-bottom:12px;}
-.empty p{font-size:14px;}
-
-/* ===== BUDGET TOTAL CARD ===== */
 .total-budget-card{background:var(--navy-pale);border-radius:12px;padding:12px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;}
 .total-budget-label{font-size:12px;color:#0C447C;}
 .total-budget-val{font-size:18px;font-weight:600;color:var(--navy);}
 .badge{display:inline-block;padding:3px 8px;border-radius:20px;font-size:11px;font-weight:500;}
 .badge-ok{background:var(--green-pale);color:var(--green);}
 .badge-over{background:var(--red-pale);color:var(--red);}
+.budget-item{padding:12px 0;border-bottom:1px solid var(--border);}
+.budget-item:last-child{border-bottom:none;}
+.budget-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.budget-name{font-size:13px;font-weight:500;}
+.budget-nums{font-size:12px;color:var(--text2);}
+.budget-nums.over{color:var(--red);font-weight:600;}
+.budget-bar-bg{background:var(--bg);border-radius:3px;height:7px;}
+.budget-bar-fill{height:7px;border-radius:3px;}
+.edit-budget-btn{width:100%;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;cursor:pointer;color:var(--text);margin-top:8px;}
+.hist-actions-wrap{display:none;padding:0 0 10px;gap:8px;}
+.hist-actions-wrap.show{display:flex;}
+.action-btn{flex:1;padding:9px 0;border-radius:9px;font-size:13px;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;font-weight:500;}
+.action-btn.edit-btn{background:var(--navy-pale);color:#0C447C;border:1px solid var(--navy-light);}
+.action-btn.del-btn{background:var(--red-pale);color:var(--red);border:1px solid #F7C1C1;}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:300;align-items:flex-end;justify-content:center;}
+.modal-overlay.show{display:flex;}
+.modal{background:var(--card);border-radius:20px 20px 0 0;padding:20px 16px 32px;width:100%;max-width:480px;margin:0 auto;max-height:85vh;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.modal-title{font-size:16px;font-weight:600;margin-bottom:16px;}
+.modal-close{float:right;background:none;border:none;font-size:20px;color:var(--text2);cursor:pointer;padding:0;}
+.modal-submit{width:100%;padding:13px;background:var(--navy);color:#fff;border:none;border-radius:11px;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer;margin-top:12px;}
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:10px 20px;border-radius:20px;font-size:13px;z-index:400;opacity:0;transition:opacity 0.3s;pointer-events:none;white-space:nowrap;}
+.toast.show{opacity:1;}
+.empty{text-align:center;padding:40px 20px;color:var(--text2);}
+.empty-icon{font-size:48px;margin-bottom:12px;}
+.empty p{font-size:14px;}
+.csv-row{display:flex;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--border);margin-bottom:4px;}
+.csv-sel{flex:1;border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:13px;background:var(--card);color:var(--text);font-family:inherit;}
+.csv-btn{flex-shrink:0;padding:7px 14px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-size:13px;font-family:inherit;cursor:pointer;font-weight:500;}
+/* 設定画面 */
+.settings-section{margin-bottom:20px;}
+.settings-section-title{font-size:12px;font-weight:600;color:var(--text2);letter-spacing:0.04em;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+.cat-manage-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);}
+.cat-manage-item:last-child{border-bottom:none;}
+.cat-manage-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.cat-manage-label{flex:1;font-size:14px;font-weight:500;}
+.cat-manage-default{font-size:10px;color:var(--text2);background:var(--bg);padding:2px 6px;border-radius:4px;}
+.cat-delete-btn{background:var(--red-pale);color:var(--red);border:1px solid #F7C1C1;border-radius:7px;padding:5px 10px;font-size:12px;font-family:inherit;cursor:pointer;}
+.add-cat-form{background:var(--bg);border-radius:12px;padding:14px;margin-top:10px;}
+.add-cat-form-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:12px;}
+.emoji-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin-bottom:10px;}
+.emoji-btn{font-size:20px;padding:6px;border-radius:8px;border:1px solid var(--border);background:var(--card);cursor:pointer;text-align:center;}
+.emoji-btn.selected{border-color:var(--navy);background:var(--navy-pale);}
+.color-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin-bottom:10px;}
+.color-btn{width:100%;aspect-ratio:1;border-radius:50%;border:2px solid transparent;cursor:pointer;}
+.color-btn.selected{border-color:var(--navy);transform:scale(1.15);}
+.add-cat-btn{width:100%;padding:11px;background:var(--navy);color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;font-family:inherit;cursor:pointer;}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<div class="app-header" id="mainHeader">
-  <h1 id="headerMonth">2026年6月 収支サマリー</h1>
-  <div class="header-amount" id="headerBalance">−₱0</div>
+<div class="app-header">
+  <h1 id="headerMonth"></h1>
+  <div class="header-amount" id="headerBalance">₱0</div>
   <div class="header-sub">
     <span>収入 <b id="headerIncome">₱0</b></span>
     <span>支出 <b id="headerExpense">₱0</b></span>
   </div>
 </div>
 
-<!-- SCREENS -->
-<!-- 1. HOME -->
+<!-- HOME -->
 <div class="screen active" id="screen-home">
   <div class="stat-grid">
     <div class="stat-box"><div class="stat-label">今月の支出</div><div class="stat-val tx-expense" id="homeExpense">₱0</div></div>
     <div class="stat-box"><div class="stat-label">予算残り</div><div class="stat-val" id="homeBudgetLeft" style="color:var(--green)">₱0</div></div>
   </div>
-  <div class="card">
-    <div class="card-title">最近の記録</div>
-    <div id="homeList"><div class="empty"><div class="empty-icon">📋</div><p>まだ記録がありません</p></div></div>
-  </div>
+  <div class="card"><div class="card-title">最近の記録</div><div id="homeList"></div></div>
 </div>
 
-<!-- 2. RECORD -->
-<div class="screen" id="screen-record" style="padding:0 0 90px;">
+<!-- RECORD -->
+<div class="screen" id="screen-record" style="padding:0 0 100px;">
   <div class="tab-bar">
     <button class="tab-btn active" id="tabExpense" onclick="switchTab('expense')">▼ 支出</button>
     <button class="tab-btn" id="tabIncome" onclick="switchTab('income')">▲ 収入</button>
   </div>
   <div style="padding:16px 12px;">
-    <div class="form-section">
-      <label class="form-label">金額（₱）</label>
-      <input class="form-input amount-input" type="number" id="amountInput" placeholder="0" inputmode="decimal">
-    </div>
-    <div class="form-section" id="catSection">
-      <label class="form-label">カテゴリ</label>
-      <div class="cat-grid" id="catGrid"></div>
-    </div>
-    <div class="form-section" style="overflow:hidden;">
-      <label class="form-label">日付</label>
-      <input class="form-input" type="date" id="dateInput">
-    </div>
-    <div class="form-section">
-      <label class="form-label">メモ（任意）</label>
-      <input class="form-input" type="text" id="memoInput" placeholder="例：スーパーで買い物" maxlength="40">
-    </div>
+    <div class="form-section"><label class="form-label">金額（₱）</label><input class="form-input amount-input" type="number" id="amountInput" placeholder="0" inputmode="decimal"></div>
+    <div class="form-section" id="catSection"><label class="form-label">カテゴリ</label><div class="cat-grid" id="catGrid"></div></div>
+    <div class="form-section" style="overflow:hidden;"><label class="form-label">日付</label><input class="form-input" type="date" id="dateInput"></div>
+    <div class="form-section"><label class="form-label">メモ（任意）</label><input class="form-input" type="text" id="memoInput" placeholder="例：スーパーで買い物" maxlength="40"></div>
     <button class="submit-btn" onclick="saveRecord()">記録する</button>
   </div>
 </div>
 
-<!-- 3. GRAPH -->
+<!-- GRAPH -->
 <div class="screen" id="screen-graph">
-  <!-- 年間累計 -->
   <div class="card">
     <div class="panel-label">年間累計支出</div>
     <div class="panel-total" id="yearTotal">₱0</div>
-    <div style="height:140px;position:relative;margin-bottom:4px;"><canvas id="barChart"></canvas></div>
+    <div style="height:140px;position:relative;"><canvas id="barChart"></canvas></div>
     <div class="graph-section-title">カテゴリ別内訳</div>
     <div id="yearBars"></div>
   </div>
-  <!-- 月間 -->
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
       <div class="panel-label" style="margin-bottom:0;">月間支出</div>
-      <select class="month-select" id="graphMonthSel" onchange="updateDonut()" style="width:auto;margin-bottom:0;padding:5px 10px;">
+      <select class="month-select" id="graphMonthSel" onchange="updateDonut()">
         <option value="1">1月</option><option value="2">2月</option><option value="3">3月</option>
         <option value="4">4月</option><option value="5">5月</option><option value="6">6月</option>
         <option value="7">7月</option><option value="8">8月</option><option value="9">9月</option>
@@ -234,15 +178,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP'
     </div>
     <div class="panel-total" id="monthTotal">₱0</div>
     <div class="donut-row">
-      <div class="donut-left"><div class="chart-wrap" style="width:130px;height:130px;margin-bottom:0;"><canvas id="donutChart"></canvas></div></div>
-      <div class="donut-right"><div class="legend-list" id="donutLegend"></div></div>
+      <div style="flex-shrink:0;"><canvas id="donutChart" width="130" height="130"></canvas></div>
+      <div class="legend-list" id="donutLegend" style="flex:1;min-width:0;"></div>
     </div>
     <div class="graph-section-title">カテゴリ別内訳</div>
     <div id="monthBars"></div>
   </div>
 </div>
 
-<!-- 4. BUDGET -->
+<!-- BUDGET -->
 <div class="screen" id="screen-budget">
   <div class="total-budget-card">
     <div><div class="total-budget-label">月合計予算</div><div class="total-budget-val" id="totalBudgetDisp">₱0</div></div>
@@ -255,23 +199,48 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP'
   </div>
 </div>
 
-<!-- 5. HISTORY -->
+<!-- HISTORY -->
 <div class="screen" id="screen-history">
-  <div class="card" style="margin-bottom:10px;">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-      <div class="card-title" style="margin-bottom:0;" id="histTitle">全記録</div>
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--border);margin-bottom:4px;">
+  <div class="card">
+    <div class="card-title" id="histTitle">全記録</div>
+    <div class="csv-row">
       <span style="font-size:13px;font-weight:500;color:var(--text);flex-shrink:0;">CSVエクスポート</span>
-      <select id="csvMonthSel" style="flex:1;border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:13px;background:var(--card);color:var(--text);font-family:inherit;">
+      <select class="csv-sel" id="csvMonthSel">
         <option value="1">1月</option><option value="2">2月</option><option value="3">3月</option>
         <option value="4">4月</option><option value="5">5月</option><option value="6">6月</option>
         <option value="7">7月</option><option value="8">8月</option><option value="9">9月</option>
         <option value="10">10月</option><option value="11">11月</option><option value="12">12月</option>
       </select>
-      <button onclick="exportCSV()" style="flex-shrink:0;padding:7px 14px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-size:13px;font-family:inherit;cursor:pointer;font-weight:500;">↓ 出力</button>
+      <button onclick="exportCSV()" class="csv-btn">↓ 出力</button>
     </div>
     <div id="histList"></div>
+  </div>
+</div>
+
+<!-- SETTINGS -->
+<div class="screen" id="screen-settings">
+  <div class="card">
+    <div class="settings-section">
+      <div class="settings-section-title">カテゴリ管理</div>
+      <div id="catManageList"></div>
+    </div>
+    <div class="add-cat-form">
+      <div class="add-cat-form-title">＋ 新しいカテゴリを追加</div>
+      <div class="form-section">
+        <label class="form-label">カテゴリ名</label>
+        <input class="form-input" type="text" id="newCatLabel" placeholder="例：ペット費" maxlength="10">
+      </div>
+      <div class="form-section">
+        <label class="form-label">アイコン（タップして選択）</label>
+        <div class="emoji-grid" id="emojiGrid"></div>
+        <div style="margin-top:6px;font-size:12px;color:var(--text2);">選択中: <span id="selectedEmojiDisp" style="font-size:18px;">🐾</span></div>
+      </div>
+      <div class="form-section">
+        <label class="form-label">カラー（タップして選択）</label>
+        <div class="color-grid" id="colorGrid"></div>
+      </div>
+      <button class="add-cat-btn" onclick="addCustomCat()">追加する</button>
+    </div>
   </div>
 </div>
 
@@ -290,7 +259,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP'
     <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>予算
   </button>
   <button class="nav-item" onclick="showScreen('history',this)">
-    <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z" stroke="none"/><polyline points="3 3 3 21 21 21"/><path d="M7 16l4-4 4 4 4-6"/></svg>履歴
+    <svg viewBox="0 0 24 24"><polyline points="3 3 3 21 21 21"/><path d="M7 16l4-4 4 4 4-6"/></svg>履歴
+  </button>
+  <button class="nav-item" onclick="showScreen('settings',this)">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>設定
   </button>
 </nav>
 
@@ -299,10 +271,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP'
   <div class="modal">
     <button class="modal-close" onclick="closeBudgetModal()">✕</button>
     <div class="modal-title">予算を編集</div>
-    <div class="form-section">
-      <label class="form-label">月合計予算（₱）</label>
-      <input class="form-input" type="number" id="totalBudgetInput" placeholder="0" inputmode="decimal">
-    </div>
+    <div class="form-section"><label class="form-label">月合計予算（₱）</label><input class="form-input" type="number" id="totalBudgetInput" placeholder="0" inputmode="decimal"></div>
     <div id="catBudgetInputs"></div>
     <button class="modal-submit" onclick="saveBudget()">保存する</button>
   </div>
@@ -314,109 +283,109 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP'
     <button class="modal-close" onclick="closeEditModal()">✕</button>
     <div class="modal-title">記録を編集</div>
     <input type="hidden" id="editId">
-    <div class="form-section">
-      <label class="form-label">金額（₱）</label>
-      <input class="form-input amount-input" type="number" id="editAmount" inputmode="decimal">
-    </div>
-    <div class="form-section" id="editCatSection">
-      <label class="form-label">カテゴリ</label>
-      <div class="cat-grid" id="editCatGrid"></div>
-    </div>
-    <div class="form-section" style="overflow:hidden;">
-      <label class="form-label">日付</label>
-      <input class="form-input" type="date" id="editDate">
-    </div>
-    <div class="form-section">
-      <label class="form-label">メモ（任意）</label>
-      <input class="form-input" type="text" id="editMemo" maxlength="40">
-    </div>
+    <div class="form-section"><label class="form-label">金額（₱）</label><input class="form-input amount-input" type="number" id="editAmount" inputmode="decimal"></div>
+    <div class="form-section" id="editCatSection"><label class="form-label">カテゴリ</label><div class="cat-grid" id="editCatGrid"></div></div>
+    <div class="form-section" style="overflow:hidden;"><label class="form-label">日付</label><input class="form-input" type="date" id="editDate"></div>
+    <div class="form-section"><label class="form-label">メモ（任意）</label><input class="form-input" type="text" id="editMemo" maxlength="40"></div>
     <button class="modal-submit" onclick="saveEdit()">更新する</button>
   </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
-// ===== DATA =====
-var CATS = [
-  {id:'food',    label:'食費',      icon:'🛒', color:'#185FA5', bg:'#E6F1FB'},
-  {id:'trans',   label:'交通費',    icon:'🚃', color:'#3B6D11', bg:'#EAF3DE'},
-  {id:'util',    label:'光熱費',    icon:'⚡', color:'#633806', bg:'#FAEEDA'},
-  {id:'fun',     label:'娯楽・趣味',icon:'🎉', color:'#72243E', bg:'#FBEAF0'},
-  {id:'med',     label:'医療費',    icon:'🏥', color:'#993C1D', bg:'#FAECE7'},
-  {id:'cloth',   label:'衣類',      icon:'👕', color:'#72243E', bg:'#F4C0D1'},
-  {id:'house',   label:'住居費',    icon:'🏠', color:'#085041', bg:'#E1F5EE'},
-  {id:'other',   label:'その他',    icon:'📦', color:'#5F5E5A', bg:'#F1EFE8'},
+// ===== デフォルトカテゴリ =====
+var DEFAULT_CATS = [
+  {id:'food',   label:'食費',        icon:'🛒', color:'#185FA5', bg:'#E6F1FB', isDefault:true},
+  {id:'eat',    label:'外食費',       icon:'🍽️', color:'#C25A00', bg:'#FDF0E0', isDefault:true},
+  {id:'trans',  label:'交通費',       icon:'🚃', color:'#3B6D11', bg:'#EAF3DE', isDefault:true},
+  {id:'util',   label:'光熱費',       icon:'⚡', color:'#633806', bg:'#FAEEDA', isDefault:true},
+  {id:'net',    label:'インターネット代',icon:'📶', color:'#0A5A8A', bg:'#DFF0FA', isDefault:true},
+  {id:'fun',    label:'娯楽・趣味',   icon:'🎉', color:'#72243E', bg:'#FBEAF0', isDefault:true},
+  {id:'beauty', label:'美容代',       icon:'💄', color:'#8B2252', bg:'#FCE4F0', isDefault:true},
+  {id:'daily',  label:'日用品',       icon:'🧴', color:'#2E6B8A', bg:'#DFF0FA', isDefault:true},
+  {id:'med',    label:'医療費',       icon:'🏥', color:'#993C1D', bg:'#FAECE7', isDefault:true},
+  {id:'insure', label:'保険料',       icon:'🛡️', color:'#1A5C3A', bg:'#E0F5EA', isDefault:true},
+  {id:'cloth',  label:'衣類',         icon:'👕', color:'#72243E', bg:'#F4C0D1', isDefault:true},
+  {id:'sub',    label:'サブスク',     icon:'📱', color:'#3A3A8A', bg:'#E8E8FA', isDefault:true},
+  {id:'house',  label:'住居費',       icon:'🏠', color:'#085041', bg:'#E1F5EE', isDefault:true},
+  {id:'other',  label:'その他',       icon:'📦', color:'#5F5E5A', bg:'#F1EFE8', isDefault:true},
 ];
-var CAT_COLORS = {food:'#185FA5',trans:'#3B6D11',util:'#854F0B',fun:'#993556',med:'#D85A30',cloth:'#D4537E',house:'#0F6E56',other:'#888780'};
+
+var EMOJI_OPTIONS = ['🐾','🎵','🏋️','📚','🚗','✈️','🎮','🍺','☕','🛍️','💰','🎁','🏖️','🌿','💻','🎨','🏠','🐶','🐱','👶','💊','🔧','📷','🎤'];
+var COLOR_OPTIONS = [
+  {color:'#185FA5',bg:'#E6F1FB'},{color:'#0F6E56',bg:'#E1F5EE'},{color:'#854F0B',bg:'#FAEEDA'},
+  {color:'#993556',bg:'#FBEAF0'},{color:'#D85A30',bg:'#FAECE7'},{color:'#D4537E',bg:'#F4C0D1'},
+  {color:'#534AB7',bg:'#EDEAFA'},{color:'#5F5E5A',bg:'#F1EFE8'},{color:'#0A5A8A',bg:'#DFF0FA'},
+  {color:'#1A5C3A',bg:'#E0F5EA'},{color:'#8B2252',bg:'#FCE4F0'},{color:'#3A3A8A',bg:'#E8E8FA'},
+  {color:'#633806',bg:'#FDF0E0'},{color:'#2E6B8A',bg:'#DFF0FA'},{color:'#A32D2D',bg:'#FCEBEB'},
+  {color:'#6B4A00',bg:'#FEF3DC'},
+];
+
+var selectedEmoji = '🐾';
+var selectedColorIdx = 0;
 var currentTab = 'expense';
-var selectedCat = 'food';
-var editSelectedCat = 'food';
-var openHistId = null;
-var barChartInst = null;
-var donutChartInst = null;
+var selectedCat = '';
+var editSelectedCat = '';
 
 function loadData(){try{return JSON.parse(localStorage.getItem('kakeibo_records')||'[]');}catch(e){return[];}}
 function saveData(d){try{localStorage.setItem('kakeibo_records',JSON.stringify(d));}catch(e){}}
 function loadBudget(){try{return JSON.parse(localStorage.getItem('kakeibo_budget')||'{"total":0,"cats":{}}');}catch(e){return{total:0,cats:{}};}}
 function saveBudgetData(d){try{localStorage.setItem('kakeibo_budget',JSON.stringify(d));}catch(e){}}
+function loadCustomCats(){try{return JSON.parse(localStorage.getItem('kakeibo_custom_cats')||'[]');}catch(e){return[];}}
+function saveCustomCats(d){try{localStorage.setItem('kakeibo_custom_cats',JSON.stringify(d));}catch(e){}}
 
+function getAllCats(){return DEFAULT_CATS.concat(loadCustomCats());}
+function getCat(id){return getAllCats().find(function(c){return c.id===id;})||DEFAULT_CATS[DEFAULT_CATS.length-1];}
 function getToday(){return new Date().toISOString().slice(0,10);}
 function fmtDate(s){var d=new Date(s+'T00:00:00');return (d.getMonth()+1)+'月'+d.getDate()+'日';}
 function fmtPeso(n){return '₱'+Math.round(n).toLocaleString();}
-function getCat(id){return CATS.find(function(c){return c.id===id;})||CATS[7];}
+function currentYM(){var n=new Date();return{y:n.getFullYear(),m:n.getMonth()+1};}
 
-function currentYM(){var now=new Date();return {y:now.getFullYear(),m:now.getMonth()+1};}
-
-// ===== SCREEN =====
-function showScreen(name, btn){
+function showScreen(name,btn){
   document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('active');});
   document.querySelectorAll('.nav-item').forEach(function(b){b.classList.remove('active');});
   document.getElementById('screen-'+name).classList.add('active');
-  if(btn) btn.classList.add('active');
-  if(name==='home') renderHome();
-  if(name==='record'){renderCatGrid();document.getElementById('dateInput').value=getToday();}
-  if(name==='graph'){setTimeout(renderGraph,100);}
-  if(name==='budget') renderBudget();
-  if(name==='history') renderHistory();
+  if(btn)btn.classList.add('active');
+  if(name==='home')renderHome();
+  if(name==='record'){if(!selectedCat)selectedCat=getAllCats()[0].id;renderCatGrid();document.getElementById('dateInput').value=getToday();}
+  if(name==='graph')setTimeout(renderGraph,100);
+  if(name==='budget')renderBudget();
+  if(name==='history')renderHistory();
+  if(name==='settings')renderSettings();
 }
 
-// ===== TAB =====
 function switchTab(tab){
   currentTab=tab;
-  selectedCat = tab==='expense'?'food':'';
+  if(tab==='expense'&&!selectedCat)selectedCat=getAllCats()[0].id;
+  if(tab==='income')selectedCat='';
   document.getElementById('tabExpense').classList.toggle('active',tab==='expense');
   document.getElementById('tabIncome').classList.toggle('active',tab==='income');
   document.getElementById('catSection').style.display=tab==='expense'?'block':'none';
   renderCatGrid();
 }
 
-// ===== CAT GRID =====
 function renderCatGrid(){
-  var grid=document.getElementById('catGrid');
-  grid.innerHTML='';
-  CATS.forEach(function(c){
-    var btn=document.createElement('button');
-    btn.className='cat-btn'+(selectedCat===c.id?' selected':'');
-    btn.innerHTML='<span class="cat-icon">'+c.icon+'</span>'+c.label;
-    btn.onclick=function(){selectedCat=c.id;renderCatGrid();};
-    grid.appendChild(btn);
+  var g=document.getElementById('catGrid');g.innerHTML='';
+  getAllCats().forEach(function(c){
+    var b=document.createElement('button');
+    b.className='cat-btn'+(selectedCat===c.id?' selected':'');
+    b.innerHTML='<span style="font-size:15px">'+c.icon+'</span>'+c.label;
+    b.onclick=function(){selectedCat=c.id;renderCatGrid();};
+    g.appendChild(b);
   });
 }
 function renderEditCatGrid(){
-  var grid=document.getElementById('editCatGrid');
-  grid.innerHTML='';
-  CATS.forEach(function(c){
-    var btn=document.createElement('button');
-    btn.className='cat-btn'+(editSelectedCat===c.id?' selected':'');
-    btn.innerHTML='<span class="cat-icon">'+c.icon+'</span>'+c.label;
-    btn.onclick=function(){editSelectedCat=c.id;renderEditCatGrid();};
-    grid.appendChild(btn);
+  var g=document.getElementById('editCatGrid');g.innerHTML='';
+  getAllCats().forEach(function(c){
+    var b=document.createElement('button');
+    b.className='cat-btn'+(editSelectedCat===c.id?' selected':'');
+    b.innerHTML='<span style="font-size:15px">'+c.icon+'</span>'+c.label;
+    b.onclick=function(){editSelectedCat=c.id;renderEditCatGrid();};
+    g.appendChild(b);
   });
 }
 
-// ===== SAVE RECORD =====
 function saveRecord(){
   var amt=parseFloat(document.getElementById('amountInput').value);
   if(!amt||amt<=0){showToast('金額を入力してください');return;}
@@ -428,194 +397,145 @@ function saveRecord(){
   saveData(records);
   document.getElementById('amountInput').value='';
   document.getElementById('memoInput').value='';
-  selectedCat='food';
-  renderCatGrid();
-  updateHeader();
-  showToast('記録しました！');
+  updateHeader();showToast('記録しました！');
 }
 
-// ===== HOME =====
+function updateHeader(){
+  var ym=currentYM(),records=loadData();
+  var mr=records.filter(function(r){var d=new Date(r.date);return d.getFullYear()===ym.y&&(d.getMonth()+1)===ym.m;});
+  var inc=mr.filter(function(r){return r.type==='income';}).reduce(function(a,r){return a+r.amount;},0);
+  var exp=mr.filter(function(r){return r.type==='expense';}).reduce(function(a,r){return a+r.amount;},0);
+  var bal=inc-exp;
+  document.getElementById('headerMonth').textContent=ym.y+'年'+ym.m+'月 収支サマリー';
+  document.getElementById('headerBalance').textContent=(bal>=0?'+':'-')+fmtPeso(Math.abs(bal));
+  document.getElementById('headerIncome').textContent=fmtPeso(inc);
+  document.getElementById('headerExpense').textContent=fmtPeso(exp);
+}
+
 function renderHome(){
-  var ym=currentYM();
-  var records=loadData();
-  var monthRecs=records.filter(function(r){var d=new Date(r.date);return d.getFullYear()===ym.y&&(d.getMonth()+1)===ym.m;});
-  var income=monthRecs.filter(function(r){return r.type==='income';}).reduce(function(a,r){return a+r.amount;},0);
-  var expense=monthRecs.filter(function(r){return r.type==='expense';}).reduce(function(a,r){return a+r.amount;},0);
-  var budget=loadBudget();
-  var left=(budget.total||0)-expense;
-  document.getElementById('homeExpense').textContent=fmtPeso(expense);
-  var leftEl=document.getElementById('homeBudgetLeft');
-  leftEl.textContent=fmtPeso(Math.abs(left));
-  leftEl.style.color=left>=0?'var(--green)':'var(--red)';
-  var sorted=[...monthRecs].sort(function(a,b){return b.date.localeCompare(a.date)||b.id.localeCompare(a.id);}).slice(0,10);
+  var ym=currentYM(),records=loadData();
+  var mr=records.filter(function(r){var d=new Date(r.date);return d.getFullYear()===ym.y&&(d.getMonth()+1)===ym.m;});
+  var inc=mr.filter(function(r){return r.type==='income';}).reduce(function(a,r){return a+r.amount;},0);
+  var exp=mr.filter(function(r){return r.type==='expense';}).reduce(function(a,r){return a+r.amount;},0);
+  var budget=loadBudget(),left=(budget.total||0)-exp;
+  document.getElementById('homeExpense').textContent=fmtPeso(exp);
+  var le=document.getElementById('homeBudgetLeft');
+  le.textContent=fmtPeso(Math.abs(left));le.style.color=left>=0?'var(--green)':'var(--red)';
+  var sorted=[...mr].sort(function(a,b){return b.date.localeCompare(a.date)||b.id.localeCompare(a.id);}).slice(0,10);
   var list=document.getElementById('homeList');
   if(!sorted.length){list.innerHTML='<div class="empty"><div class="empty-icon">📋</div><p>まだ記録がありません</p></div>';return;}
-  var groups={};
-  sorted.forEach(function(r){(groups[r.date]=groups[r.date]||[]).push(r);});
+  var groups={};sorted.forEach(function(r){(groups[r.date]=groups[r.date]||[]).push(r);});
   var html='';
   Object.keys(groups).sort(function(a,b){return b.localeCompare(a);}).forEach(function(date){
     html+='<div class="tx-group-label">'+fmtDate(date)+'</div>';
     groups[date].forEach(function(r){
-      var c=getCat(r.cat);
-      var isIncome=r.type==='income';
-      html+='<div class="tx-item"><div class="tx-icon" style="background:'+c.bg+'">'+c.icon+'</div><div class="tx-info"><div class="tx-name">'+(isIncome?'収入':c.label)+'</div>'+(r.memo?'<div class="tx-memo">'+r.memo+'</div>':'')+'</div><div class="tx-amount '+(isIncome?'tx-income':'tx-expense')+'">'+(isIncome?'+':'-')+fmtPeso(r.amount)+'</div></div>';
+      var c=getCat(r.cat),ii=r.type==='income';
+      html+='<div class="tx-item"><div class="tx-icon" style="background:'+c.bg+'">'+c.icon+'</div><div class="tx-info"><div class="tx-name">'+(ii?'収入':c.label)+'</div>'+(r.memo?'<div class="tx-memo">'+r.memo+'</div>':'')+'</div><div class="tx-amount '+(ii?'tx-income':'tx-expense')+'">'+(ii?'+':'-')+fmtPeso(r.amount)+'</div></div>';
     });
   });
   list.innerHTML=html;
 }
 
-function updateHeader(){
-  var ym=currentYM();
-  var records=loadData();
-  var monthRecs=records.filter(function(r){var d=new Date(r.date);return d.getFullYear()===ym.y&&(d.getMonth()+1)===ym.m;});
-  var income=monthRecs.filter(function(r){return r.type==='income';}).reduce(function(a,r){return a+r.amount;},0);
-  var expense=monthRecs.filter(function(r){return r.type==='expense';}).reduce(function(a,r){return a+r.amount;},0);
-  var bal=income-expense;
-  document.getElementById('headerMonth').textContent=ym.y+'年'+ym.m+'月 収支サマリー';
-  document.getElementById('headerBalance').textContent=(bal>=0?'+':'-')+fmtPeso(Math.abs(bal));
-  document.getElementById('headerIncome').textContent=fmtPeso(income);
-  document.getElementById('headerExpense').textContent=fmtPeso(expense);
-}
-
-// ===== GRAPH =====
 function renderGraph(){
   var ym=currentYM();
   document.getElementById('graphMonthSel').value=ym.m;
   var records=loadData();
-  var year=ym.y;
-  var yearRecs=records.filter(function(r){return new Date(r.date).getFullYear()===year&&r.type==='expense';});
-  var yearTotal=yearRecs.reduce(function(a,r){return a+r.amount;},0);
-  document.getElementById('yearTotal').textContent=fmtPeso(yearTotal);
-
-  var monthTotals=[];
-  for(var m=1;m<=12;m++){
-    var mm=m;
-    monthTotals.push(yearRecs.filter(function(r){return (new Date(r.date).getMonth()+1)===mm;}).reduce(function(a,r){return a+r.amount;},0));
-  }
-  var labels=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+  var yr=records.filter(function(r){return new Date(r.date).getFullYear()===ym.y&&r.type==='expense';});
+  var yTotal=yr.reduce(function(a,r){return a+r.amount;},0);
+  document.getElementById('yearTotal').textContent=fmtPeso(yTotal);
+  var mTotals=[];
+  for(var m=1;m<=12;m++){var mm=m;mTotals.push(yr.filter(function(r){return(new Date(r.date).getMonth()+1)===mm;}).reduce(function(a,r){return a+r.amount;},0));}
   var barEl=document.getElementById('barChart');
   var pw=barEl.parentElement.offsetWidth||300;
   barEl.width=pw;barEl.height=140;
-  var ctx=barEl.getContext('2d');
-  ctx.clearRect(0,0,pw,140);
-  var maxVal=Math.max.apply(null,monthTotals)||1;
-  var n=12;var padL=4;var padR=4;var padT=8;var padB=22;
-  var totalW=pw-padL-padR;
-  var slotW=totalW/n;var barW=slotW*0.65;
+  var ctx=barEl.getContext('2d');ctx.clearRect(0,0,pw,140);
+  var maxV=Math.max.apply(null,mTotals)||1;
+  var n=12,padL=4,padR=4,padB=22,padT=6,tw=pw-padL-padR,sw=tw/n,bw=sw*0.6;
   for(var i=0;i<n;i++){
-    var val=monthTotals[i];
-    var bh=Math.round((val/maxVal)*(140-padT-padB));
-    var bx=padL+i*slotW+(slotW-barW)/2;
-    var by=140-padB-bh;
+    var v=mTotals[i],bh=Math.round((v/maxV)*(140-padT-padB));
+    var bx=padL+i*sw+(sw-bw)/2,by=140-padB-bh;
     ctx.fillStyle=(i===ym.m-1)?'#185FA5':'#B5D4F4';
-    ctx.beginPath();
-    var r=3;
-    ctx.moveTo(bx+r,by);ctx.lineTo(bx+barW-r,by);
-    ctx.quadraticCurveTo(bx+barW,by,bx+barW,by+r);
-    ctx.lineTo(bx+barW,by+bh);ctx.lineTo(bx,by+bh);ctx.lineTo(bx,by+r);
-    ctx.quadraticCurveTo(bx,by,bx+r,by);
-    ctx.closePath();ctx.fill();
+    if(bh>0){ctx.beginPath();ctx.moveTo(bx+2,by);ctx.lineTo(bx+bw-2,by);ctx.quadraticCurveTo(bx+bw,by,bx+bw,by+2);ctx.lineTo(bx+bw,by+bh);ctx.lineTo(bx,by+bh);ctx.lineTo(bx,by+2);ctx.quadraticCurveTo(bx,by,bx+2,by);ctx.closePath();ctx.fill();}
     ctx.fillStyle='#888780';ctx.font='9px sans-serif';ctx.textAlign='center';
-    ctx.fillText(labels[i],padL+i*slotW+slotW/2,140-6);
+    ctx.fillText((i+1)+'月',padL+i*sw+sw/2,140-6);
   }
-
-  var catTotals={};
-  CATS.forEach(function(c){catTotals[c.id]=0;});
-  yearRecs.forEach(function(r){if(catTotals[r.cat]!==undefined)catTotals[r.cat]+=r.amount;});
-  var max=Math.max.apply(null,Object.values(catTotals))||1;
+  var allCats=getAllCats();
+  var cTotals={};allCats.forEach(function(c){cTotals[c.id]=0;});
+  yr.forEach(function(r){if(cTotals[r.cat]!==undefined)cTotals[r.cat]+=r.amount;});
+  var maxC=Math.max.apply(null,Object.values(cTotals))||1;
   var html='';
-  CATS.forEach(function(c){
-    var pct=yearTotal>0?Math.round(catTotals[c.id]/yearTotal*100):0;
-    html+='<div class="bar-row"><div class="bar-row-label"><span>'+c.icon+' '+c.label+'</span><span>'+fmtPeso(catTotals[c.id])+' ('+pct+'%)</span></div><div class="bar-bg"><div class="bar-fill" style="width:'+Math.round(catTotals[c.id]/max*100)+'%;background:'+CAT_COLORS[c.id]+';"></div></div></div>';
+  allCats.forEach(function(c){
+    if(cTotals[c.id]===0)return;
+    var pct=yTotal>0?Math.round(cTotals[c.id]/yTotal*100):0;
+    html+='<div class="bar-row"><div class="bar-row-label"><span>'+c.icon+' '+c.label+'</span><span>'+fmtPeso(cTotals[c.id])+' ('+pct+'%)</span></div><div class="bar-bg"><div class="bar-fill" style="width:'+Math.round(cTotals[c.id]/maxC*100)+'%;background:'+c.color+'"></div></div></div>';
   });
-  document.getElementById('yearBars').innerHTML=html;
+  document.getElementById('yearBars').innerHTML=html||'<div style="font-size:12px;color:var(--text2);padding:8px 0;">データなし</div>';
   updateDonut();
 }
 
 function updateDonut(){
   var m=parseInt(document.getElementById('graphMonthSel').value);
-  var records=loadData();
-  var ym=currentYM();
+  var ym=currentYM(),records=loadData();
   var recs=records.filter(function(r){var d=new Date(r.date);return d.getFullYear()===ym.y&&(d.getMonth()+1)===m&&r.type==='expense';});
   var total=recs.reduce(function(a,r){return a+r.amount;},0);
   document.getElementById('monthTotal').textContent=fmtPeso(total);
-  var catTotals={};
-  CATS.forEach(function(c){catTotals[c.id]=0;});
-  recs.forEach(function(r){if(catTotals[r.cat]!==undefined)catTotals[r.cat]+=r.amount;});
-  var data=CATS.map(function(c){return catTotals[c.id];});
-  var colors=CATS.map(function(c){return CAT_COLORS[c.id];});
-  if(donutChartInst){donutChartInst=null;}
+  var allCats=getAllCats();
+  var cTotals={};allCats.forEach(function(c){cTotals[c.id]=0;});
+  recs.forEach(function(r){if(cTotals[r.cat]!==undefined)cTotals[r.cat]+=r.amount;});
+  var data=allCats.map(function(c){return cTotals[c.id];});
+  var colors=allCats.map(function(c){return c.color;});
   var el=document.getElementById('donutChart');
   el.width=130;el.height=130;
-  var ctx2=el.getContext('2d');
-  ctx2.clearRect(0,0,130,130);
-  var hasData=data.some(function(v){return v>0;});
-  if(hasData){
-    var total2=data.reduce(function(a,b){return a+b;},0);
-    var startAngle=-Math.PI/2;
-    var cx=65,cy=65,outerR=55,innerR=33;
-    data.forEach(function(val,i){
-      if(val<=0)return;
-      var sweep=(val/total2)*Math.PI*2;
-      ctx2.beginPath();
-      ctx2.moveTo(cx+outerR*Math.cos(startAngle),cy+outerR*Math.sin(startAngle));
-      ctx2.arc(cx,cy,outerR,startAngle,startAngle+sweep);
-      ctx2.arc(cx,cy,innerR,startAngle+sweep,startAngle,true);
-      ctx2.closePath();
-      ctx2.fillStyle=colors[i];ctx2.fill();
-      startAngle+=sweep;
+  var ctx2=el.getContext('2d');ctx2.clearRect(0,0,130,130);
+  if(data.some(function(v){return v>0;})){
+    var tot2=data.reduce(function(a,b){return a+b;},0);
+    var sa=-Math.PI/2,cx=65,cy=65,or=55,ir=33;
+    data.forEach(function(v,i){
+      if(v<=0)return;
+      var sw2=(v/tot2)*Math.PI*2;
+      ctx2.beginPath();ctx2.moveTo(cx+or*Math.cos(sa),cy+or*Math.sin(sa));
+      ctx2.arc(cx,cy,or,sa,sa+sw2);ctx2.arc(cx,cy,ir,sa+sw2,sa,true);
+      ctx2.closePath();ctx2.fillStyle=colors[i];ctx2.fill();sa+=sw2;
     });
   } else {
-    ctx2.beginPath();ctx2.arc(65,65,45,0,Math.PI*2);
-    ctx2.strokeStyle='#E2E6EB';ctx2.lineWidth=18;ctx2.stroke();
+    ctx2.beginPath();ctx2.arc(65,65,45,0,Math.PI*2);ctx2.strokeStyle='#E2E6EB';ctx2.lineWidth=18;ctx2.stroke();
   }
-  var legendHtml='';
-  CATS.forEach(function(c){
-    var pct=total>0?Math.round(catTotals[c.id]/total*100):0;
-    if(pct>0) legendHtml+='<div class="legend-row"><span class="legend-dot" style="background:'+CAT_COLORS[c.id]+';"></span>'+c.label+' '+pct+'%</div>';
+  var lh='';
+  allCats.forEach(function(c){
+    var pct=total>0?Math.round(cTotals[c.id]/total*100):0;
+    if(pct>0)lh+='<div class="legend-row"><span class="legend-dot" style="background:'+c.color+'"></span>'+c.label+' '+pct+'%</div>';
   });
-  if(!legendHtml) legendHtml='<div style="font-size:11px;color:var(--text2);padding:4px 0;">データなし</div>';
-  document.getElementById('donutLegend').innerHTML=legendHtml;
-
-  var max=Math.max.apply(null,data)||1;
-  var barsHtml='';
-  CATS.forEach(function(c){
-    var pct=total>0?Math.round(catTotals[c.id]/total*100):0;
-    barsHtml+='<div class="bar-row"><div class="bar-row-label"><span>'+c.icon+' '+c.label+'</span><span>'+fmtPeso(catTotals[c.id])+' ('+pct+'%)</span></div><div class="bar-bg"><div class="bar-fill" style="width:'+Math.round(catTotals[c.id]/max*100)+'%;background:'+CAT_COLORS[c.id]+';"></div></div></div>';
+  document.getElementById('donutLegend').innerHTML=lh||'<div style="font-size:10px;color:var(--text2)">データなし</div>';
+  var maxM=Math.max.apply(null,data)||1,mh='';
+  allCats.forEach(function(c){
+    if(cTotals[c.id]===0)return;
+    var pct=total>0?Math.round(cTotals[c.id]/total*100):0;
+    mh+='<div class="bar-row"><div class="bar-row-label"><span>'+c.icon+' '+c.label+'</span><span>'+fmtPeso(cTotals[c.id])+' ('+pct+'%)</span></div><div class="bar-bg"><div class="bar-fill" style="width:'+Math.round(cTotals[c.id]/maxM*100)+'%;background:'+c.color+'"></div></div></div>';
   });
-  document.getElementById('monthBars').innerHTML=barsHtml;
+  document.getElementById('monthBars').innerHTML=mh||'<div style="font-size:12px;color:var(--text2);padding:8px 0;">データなし</div>';
 }
 
-// ===== BUDGET =====
 function renderBudget(){
-  var records=loadData();
-  var ym=currentYM();
-  var monthRecs=records.filter(function(r){var d=new Date(r.date);return d.getFullYear()===ym.y&&(d.getMonth()+1)===ym.m&&r.type==='expense';});
-  var budget=loadBudget();
-  var totalExpense=monthRecs.reduce(function(a,r){return a+r.amount;},0);
-  var totalBudget=budget.total||0;
-  document.getElementById('totalBudgetDisp').textContent=fmtPeso(totalBudget);
-  var left=totalBudget-totalExpense;
-  var badge=document.getElementById('totalBudgetBadge');
-  if(totalBudget>0){
-    badge.innerHTML='<span class="badge '+(left>=0?'badge-ok':'badge-over')+'">'+(left>=0?'残り'+fmtPeso(left):'超過'+fmtPeso(Math.abs(left)))+'</span>';
-  } else {badge.innerHTML='';}
+  var ym=currentYM(),records=loadData();
+  var mr=records.filter(function(r){var d=new Date(r.date);return d.getFullYear()===ym.y&&(d.getMonth()+1)===ym.m&&r.type==='expense';});
+  var budget=loadBudget(),tExp=mr.reduce(function(a,r){return a+r.amount;},0),tBud=budget.total||0;
+  document.getElementById('totalBudgetDisp').textContent=fmtPeso(tBud);
+  var left=tBud-tExp,badge=document.getElementById('totalBudgetBadge');
+  badge.innerHTML=tBud>0?'<span class="badge '+(left>=0?'badge-ok':'badge-over')+'">'+(left>=0?'残り'+fmtPeso(left):'超過'+fmtPeso(Math.abs(left)))+'</span>':'';
   var html='';
-  CATS.forEach(function(c){
-    var spent=monthRecs.filter(function(r){return r.cat===c.id;}).reduce(function(a,r){return a+r.amount;},0);
-    var budgeted=budget.cats&&budget.cats[c.id]?budget.cats[c.id]:0;
-    var pct=budgeted>0?Math.min(Math.round(spent/budgeted*100),100):0;
-    var over=budgeted>0&&spent>budgeted;
-    html+='<div class="budget-item"><div class="budget-row"><span class="budget-name">'+c.icon+' '+c.label+'</span><span class="budget-nums'+(over?' over':'')+'">'+fmtPeso(spent)+' / '+fmtPeso(budgeted)+(over?' ⚠':'')+'</span></div><div class="budget-bar-bg"><div class="budget-bar-fill" style="width:'+pct+'%;background:'+CAT_COLORS[c.id]+';"></div></div></div>';
+  getAllCats().forEach(function(c){
+    var spent=mr.filter(function(r){return r.cat===c.id;}).reduce(function(a,r){return a+r.amount;},0);
+    var bud=budget.cats&&budget.cats[c.id]?budget.cats[c.id]:0;
+    var pct=bud>0?Math.min(Math.round(spent/bud*100),100):0,over=bud>0&&spent>bud;
+    html+='<div class="budget-item"><div class="budget-row"><span class="budget-name">'+c.icon+' '+c.label+'</span><span class="budget-nums'+(over?' over':'')+'">'+fmtPeso(spent)+' / '+fmtPeso(bud)+(over?' ⚠':'')+'</span></div><div class="budget-bar-bg"><div class="budget-bar-fill" style="width:'+pct+'%;background:'+c.color+'"></div></div></div>';
   });
   document.getElementById('budgetList').innerHTML=html;
 }
-
 function openBudgetModal(){
   var budget=loadBudget();
   document.getElementById('totalBudgetInput').value=budget.total||'';
   var html='';
-  CATS.forEach(function(c){
+  getAllCats().forEach(function(c){
     var val=budget.cats&&budget.cats[c.id]?budget.cats[c.id]:'';
     html+='<div class="form-section"><label class="form-label">'+c.icon+' '+c.label+'（₱）</label><input class="form-input" type="number" id="budCat_'+c.id+'" value="'+val+'" placeholder="0" inputmode="decimal"></div>';
   });
@@ -625,14 +545,10 @@ function openBudgetModal(){
 function closeBudgetModal(){document.getElementById('budgetModal').classList.remove('show');}
 function saveBudget(){
   var b={total:parseFloat(document.getElementById('totalBudgetInput').value)||0,cats:{}};
-  CATS.forEach(function(c){b.cats[c.id]=parseFloat(document.getElementById('budCat_'+c.id).value)||0;});
-  saveBudgetData(b);
-  closeBudgetModal();
-  renderBudget();
-  showToast('予算を保存しました');
+  getAllCats().forEach(function(c){b.cats[c.id]=parseFloat(document.getElementById('budCat_'+c.id).value)||0;});
+  saveBudgetData(b);closeBudgetModal();renderBudget();showToast('予算を保存しました');
 }
 
-// ===== HISTORY =====
 function renderHistory(){
   var ym=currentYM();
   document.getElementById('csvMonthSel').value=ym.m;
@@ -641,22 +557,16 @@ function renderHistory(){
   document.getElementById('histTitle').textContent='全記録（'+sorted.length+'件）';
   var list=document.getElementById('histList');
   if(!sorted.length){list.innerHTML='<div class="empty"><div class="empty-icon">📋</div><p>まだ記録がありません</p></div>';return;}
-  var groups={};
-  sorted.forEach(function(r){(groups[r.date]=groups[r.date]||[]).push(r);});
+  var groups={};sorted.forEach(function(r){(groups[r.date]=groups[r.date]||[]).push(r);});
   var container=document.createElement('div');
   Object.keys(groups).sort(function(a,b){return b.localeCompare(a);}).forEach(function(date){
-    var label=document.createElement('div');
-    label.className='tx-group-label';label.textContent=fmtDate(date);
-    container.appendChild(label);
+    var label=document.createElement('div');label.className='tx-group-label';label.textContent=fmtDate(date);container.appendChild(label);
     groups[date].forEach(function(r){
-      var c=getCat(r.cat);
-      var isIncome=r.type==='income';
+      var c=getCat(r.cat),ii=r.type==='income';
       var wrap=document.createElement('div');
-      var item=document.createElement('div');
-      item.className='tx-item';
-      item.innerHTML='<div class="tx-icon" style="background:'+c.bg+'">'+c.icon+'</div><div class="tx-info"><div class="tx-name">'+(isIncome?'収入':c.label)+'</div>'+(r.memo?'<div class="tx-memo">'+r.memo+'</div>':'')+'</div><div class="tx-amount '+(isIncome?'tx-income':'tx-expense')+'">'+(isIncome?'+':'-')+fmtPeso(r.amount)+'</div>';
-      var actWrap=document.createElement('div');
-      actWrap.className='hist-actions-wrap';
+      var item=document.createElement('div');item.className='tx-item';
+      item.innerHTML='<div class="tx-icon" style="background:'+c.bg+'">'+c.icon+'</div><div class="tx-info"><div class="tx-name">'+(ii?'収入':c.label)+'</div>'+(r.memo?'<div class="tx-memo">'+r.memo+'</div>':'')+'</div><div class="tx-amount '+(ii?'tx-income':'tx-expense')+'">'+(ii?'+':'-')+fmtPeso(r.amount)+'</div>';
+      var actWrap=document.createElement('div');actWrap.className='hist-actions-wrap';
       actWrap.innerHTML='<button class="action-btn edit-btn" onclick="openEdit(\''+r.id+'\')">✏️ 編集</button><button class="action-btn del-btn" onclick="deleteRecord(\''+r.id+'\')">🗑 削除</button>';
       item.onclick=function(){
         var isOpen=actWrap.classList.contains('show');
@@ -664,99 +574,119 @@ function renderHistory(){
         document.querySelectorAll('.tx-item').forEach(function(el){el.style.background='';});
         if(!isOpen){actWrap.classList.add('show');item.style.background='var(--bg)';}
       };
-      wrap.appendChild(item);
-      wrap.appendChild(actWrap);
-      container.appendChild(wrap);
+      wrap.appendChild(item);wrap.appendChild(actWrap);container.appendChild(wrap);
     });
   });
-  list.innerHTML='';
-  list.appendChild(container);
+  list.innerHTML='';list.appendChild(container);
 }
 
-// ===== CSV EXPORT =====
 function exportCSV(){
-  var m=parseInt(document.getElementById('csvMonthSel').value);
-  var ym=currentYM();
-  var records=loadData();
-  var filtered=records.filter(function(r){
-    var d=new Date(r.date);
-    return d.getFullYear()===ym.y&&(d.getMonth()+1)===m;
-  }).sort(function(a,b){return a.date.localeCompare(b.date);});
+  var m=parseInt(document.getElementById('csvMonthSel').value),ym=currentYM(),records=loadData();
+  var filtered=records.filter(function(r){var d=new Date(r.date);return d.getFullYear()===ym.y&&(d.getMonth()+1)===m;}).sort(function(a,b){return a.date.localeCompare(b.date);});
   if(!filtered.length){showToast(m+'月のデータがありません');return;}
-  var bom='\uFEFF';
-  var header='日付,種別,カテゴリ,金額(₱),メモ\n';
-  var rows=filtered.map(function(r){
-    var c=getCat(r.cat);
-    var type=r.type==='income'?'収入':'支出';
-    var cat=r.type==='income'?'収入':c.label;
-    var memo=(r.memo||'').replace(/,/g,'、');
-    return r.date+','+type+','+cat+','+Math.round(r.amount)+','+(memo||'');
-  }).join('\n');
-  var csv=bom+header+rows;
-  var blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
-  var url=URL.createObjectURL(blob);
-  var a=document.createElement('a');
-  a.href=url;
-  a.download=ym.y+'年'+m+'月_家計簿.csv';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+  var bom='\uFEFF',hdr='日付,種別,カテゴリ,金額(₱),メモ\n';
+  var rows=filtered.map(function(r){var c=getCat(r.cat);return r.date+','+(r.type==='income'?'収入':'支出')+','+(r.type==='income'?'収入':c.label)+','+Math.round(r.amount)+','+(r.memo||'').replace(/,/g,'、');}).join('\n');
+  var blob=new Blob([bom+hdr+rows],{type:'text/csv;charset=utf-8;'});
+  var url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download=ym.y+'年'+m+'月_家計簿.csv';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
   showToast(m+'月分をCSV出力しました');
 }
 
 function deleteRecord(id){
-  if(!confirm('この記録を削除しますか？')) return;
+  if(!confirm('この記録を削除しますか？'))return;
   var records=loadData().filter(function(r){return r.id!==id;});
-  saveData(records);
-  renderHistory();
-  updateHeader();
-  showToast('削除しました');
+  saveData(records);renderHistory();updateHeader();showToast('削除しました');
 }
-
 function openEdit(id){
-  var r=loadData().find(function(r){return r.id===id;});
-  if(!r) return;
+  var r=loadData().find(function(r){return r.id===id;});if(!r)return;
   document.getElementById('editId').value=r.id;
   document.getElementById('editAmount').value=r.amount;
   document.getElementById('editDate').value=r.date;
   document.getElementById('editMemo').value=r.memo||'';
   editSelectedCat=r.cat;
-  var catSec=document.getElementById('editCatSection');
-  catSec.style.display=r.type==='expense'?'block':'none';
+  document.getElementById('editCatSection').style.display=r.type==='expense'?'block':'none';
   renderEditCatGrid();
   document.getElementById('editModal').classList.add('show');
 }
 function closeEditModal(){document.getElementById('editModal').classList.remove('show');}
 function saveEdit(){
-  var id=document.getElementById('editId').value;
-  var records=loadData();
-  var idx=records.findIndex(function(r){return r.id===id;});
-  if(idx===-1) return;
+  var id=document.getElementById('editId').value,records=loadData();
+  var idx=records.findIndex(function(r){return r.id===id;});if(idx===-1)return;
   records[idx].amount=parseFloat(document.getElementById('editAmount').value)||records[idx].amount;
   records[idx].date=document.getElementById('editDate').value||records[idx].date;
   records[idx].memo=document.getElementById('editMemo').value;
-  if(records[idx].type==='expense') records[idx].cat=editSelectedCat;
-  saveData(records);
-  closeEditModal();
-  renderHistory();
-  updateHeader();
-  showToast('更新しました');
+  if(records[idx].type==='expense')records[idx].cat=editSelectedCat;
+  saveData(records);closeEditModal();renderHistory();updateHeader();showToast('更新しました');
 }
 
-// ===== TOAST =====
+// ===== 設定・カテゴリ管理 =====
+function renderSettings(){
+  var customCats=loadCustomCats();
+  var html='';
+  DEFAULT_CATS.forEach(function(c){
+    html+='<div class="cat-manage-item"><div class="cat-manage-icon" style="background:'+c.bg+'">'+c.icon+'</div><div class="cat-manage-label">'+c.label+'</div><span class="cat-manage-default">デフォルト</span></div>';
+  });
+  customCats.forEach(function(c){
+    html+='<div class="cat-manage-item"><div class="cat-manage-icon" style="background:'+c.bg+'">'+c.icon+'</div><div class="cat-manage-label">'+c.label+'</div><button class="cat-delete-btn" onclick="deleteCustomCat(\''+c.id+'\')">削除</button></div>';
+  });
+  document.getElementById('catManageList').innerHTML=html;
+  renderEmojiGrid();
+  renderColorGrid();
+}
+
+function renderEmojiGrid(){
+  var g=document.getElementById('emojiGrid');g.innerHTML='';
+  EMOJI_OPTIONS.forEach(function(e){
+    var b=document.createElement('button');
+    b.className='emoji-btn'+(selectedEmoji===e?' selected':'');
+    b.textContent=e;
+    b.onclick=function(){selectedEmoji=e;document.getElementById('selectedEmojiDisp').textContent=e;renderEmojiGrid();};
+    g.appendChild(b);
+  });
+}
+
+function renderColorGrid(){
+  var g=document.getElementById('colorGrid');g.innerHTML='';
+  COLOR_OPTIONS.forEach(function(c,i){
+    var b=document.createElement('button');
+    b.className='color-btn'+(selectedColorIdx===i?' selected':'');
+    b.style.background=c.color;
+    b.onclick=function(){selectedColorIdx=i;renderColorGrid();};
+    g.appendChild(b);
+  });
+}
+
+function addCustomCat(){
+  var label=document.getElementById('newCatLabel').value.trim();
+  if(!label){showToast('カテゴリ名を入力してください');return;}
+  var allCats=getAllCats();
+  if(allCats.find(function(c){return c.label===label;})){showToast('同じ名前のカテゴリが既にあります');return;}
+  var col=COLOR_OPTIONS[selectedColorIdx];
+  var newCat={id:'custom_'+Date.now(),label:label,icon:selectedEmoji,color:col.color,bg:col.bg,isDefault:false};
+  var customs=loadCustomCats();customs.push(newCat);saveCustomCats(customs);
+  document.getElementById('newCatLabel').value='';
+  renderSettings();showToast('カテゴリを追加しました！');
+}
+
+function deleteCustomCat(id){
+  var records=loadData();
+  var inUse=records.some(function(r){return r.cat===id;});
+  if(inUse){if(!confirm('このカテゴリは記録に使用されています。削除すると「その他」に変更されます。続けますか？'))return;
+    var updated=records.map(function(r){return r.cat===id?Object.assign({},r,{cat:'other'}):r;});saveData(updated);}
+  var customs=loadCustomCats().filter(function(c){return c.id!==id;});
+  saveCustomCats(customs);renderSettings();showToast('カテゴリを削除しました');
+}
+
 function showToast(msg){
-  var t=document.getElementById('toast');
-  t.textContent=msg;t.classList.add('show');
-  setTimeout(function(){t.classList.remove('show');},2000);
+  var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');},2200);
 }
 
-// ===== INIT =====
 document.addEventListener('DOMContentLoaded',function(){
+  selectedCat=getAllCats()[0].id;
   document.getElementById('dateInput').value=getToday();
-  renderCatGrid();
-  updateHeader();
-  renderHome();
+  renderCatGrid();updateHeader();renderHome();
 });
 </script>
 </body>
