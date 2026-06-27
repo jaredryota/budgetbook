@@ -74,6 +74,30 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP'
 .badge{display:inline-block;padding:3px 8px;border-radius:20px;font-size:11px;font-weight:500;}
 .badge-ok{background:var(--green-pale);color:var(--green);}
 .badge-over{background:var(--red-pale);color:var(--red);}
+/* 予算サマリーヘッダー */
+.bud-summary-hdr{background:var(--navy);padding:0 14px 16px;margin-bottom:0;}
+.bud-summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.bud-summary-box{background:rgba(255,255,255,0.1);border-radius:8px;padding:8px 10px;}
+.bud-summary-label{font-size:10px;color:#B5D4F4;margin-bottom:3px;}
+.bud-summary-val{font-size:14px;font-weight:600;color:#fff;}
+.bud-summary-val.ok{color:#9FE1CB;}
+.bud-summary-val.over{color:#F09595;}
+/* 予算テーブル */
+.bud-tbl{width:100%;border-collapse:collapse;}
+.bud-tbl th{font-size:10px;font-weight:500;color:var(--text2);text-align:right;padding:0 4px 8px;}
+.bud-tbl th:first-child{text-align:left;padding-left:0;}
+.bud-tbl td{padding:8px 4px;border-top:0.5px solid var(--border);vertical-align:middle;}
+.bud-tbl td:first-child{padding-left:0;}
+.bud-tbl td:not(:first-child){text-align:right;font-size:12px;}
+.bud-tbl tr.total-row td{font-weight:600;border-top:1px solid var(--border);padding-top:10px;}
+.bud-cat-cell{display:flex;align-items:center;gap:7px;}
+.bud-cat-ico{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.bud-cat-name{font-size:12px;font-weight:500;color:var(--text);}
+.bud-bar-row{background:var(--bg);border-radius:2px;height:4px;margin-top:4px;}
+.bud-bar-row-fill{height:4px;border-radius:2px;}
+.diff-ok{color:var(--green);font-weight:500;}
+.diff-over{color:var(--red);font-weight:500;}
+.diff-zero{color:var(--text2);}
 .budget-item{padding:12px 0;border-bottom:1px solid var(--border);}
 .budget-item:last-child{border-bottom:none;}
 .budget-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
@@ -187,15 +211,31 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP'
 </div>
 
 <!-- BUDGET -->
-<div class="screen" id="screen-budget">
-  <div class="total-budget-card">
-    <div><div class="total-budget-label">月合計予算</div><div class="total-budget-val" id="totalBudgetDisp">₱0</div></div>
-    <div id="totalBudgetBadge"></div>
+<div class="screen" id="screen-budget" style="padding:0 0 100px;">
+  <div class="bud-summary-hdr">
+    <div class="bud-summary-grid">
+      <div class="bud-summary-box">
+        <div class="bud-summary-label">計画</div>
+        <div class="bud-summary-val" id="budPlanTotal">₱0</div>
+      </div>
+      <div class="bud-summary-box">
+        <div class="bud-summary-label">実績</div>
+        <div class="bud-summary-val" id="budActualTotal">₱0</div>
+      </div>
+      <div class="bud-summary-box">
+        <div class="bud-summary-label">差額</div>
+        <div class="bud-summary-val" id="budDiffTotal">₱0</div>
+      </div>
+    </div>
   </div>
-  <div class="card">
-    <div class="card-title">カテゴリ別予算</div>
-    <div id="budgetList"></div>
-    <button class="edit-budget-btn" onclick="openBudgetModal()">予算を編集する</button>
+  <div style="padding:12px 12px 0;">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <div class="card-title" style="margin-bottom:0;">カテゴリ別　計画 vs 実績</div>
+      </div>
+      <div id="budgetList"></div>
+      <button class="edit-budget-btn" onclick="openBudgetModal()">予算を編集する</button>
+    </div>
   </div>
 </div>
 
@@ -518,17 +558,41 @@ function updateDonut(){
 function renderBudget(){
   var ym=currentYM(),records=loadData();
   var mr=records.filter(function(r){var d=new Date(r.date);return d.getFullYear()===ym.y&&(d.getMonth()+1)===ym.m&&r.type==='expense';});
-  var budget=loadBudget(),tExp=mr.reduce(function(a,r){return a+r.amount;},0),tBud=budget.total||0;
-  document.getElementById('totalBudgetDisp').textContent=fmtPeso(tBud);
-  var left=tBud-tExp,badge=document.getElementById('totalBudgetBadge');
-  badge.innerHTML=tBud>0?'<span class="badge '+(left>=0?'badge-ok':'badge-over')+'">'+(left>=0?'残り'+fmtPeso(left):'超過'+fmtPeso(Math.abs(left)))+'</span>':'';
-  var html='';
+  var budget=loadBudget();
+  var tBud=budget.total||0;
+  var tExp=mr.reduce(function(a,r){return a+r.amount;},0);
+  var tDiff=tBud-tExp;
+  document.getElementById('budPlanTotal').textContent=fmtPeso(tBud);
+  document.getElementById('budActualTotal').textContent=fmtPeso(tExp);
+  var diffEl=document.getElementById('budDiffTotal');
+  diffEl.textContent=(tDiff>=0?'+':'')+fmtPeso(tDiff);
+  diffEl.className='bud-summary-val'+(tBud===0?'':tDiff>=0?' ok':' over');
+
+  var html='<table class="bud-tbl"><thead><tr><th style="width:40%">カテゴリ</th><th>計画</th><th>実績</th><th>差額</th></tr></thead><tbody>';
+  var sumPlan=0,sumActual=0;
   getAllCats().forEach(function(c){
     var spent=mr.filter(function(r){return r.cat===c.id;}).reduce(function(a,r){return a+r.amount;},0);
     var bud=budget.cats&&budget.cats[c.id]?budget.cats[c.id]:0;
-    var pct=bud>0?Math.min(Math.round(spent/bud*100),100):0,over=bud>0&&spent>bud;
-    html+='<div class="budget-item"><div class="budget-row"><span class="budget-name">'+c.icon+' '+c.label+'</span><span class="budget-nums'+(over?' over':'')+'">'+fmtPeso(spent)+' / '+fmtPeso(bud)+(over?' ⚠':'')+'</span></div><div class="budget-bar-bg"><div class="budget-bar-fill" style="width:'+pct+'%;background:'+c.color+'"></div></div></div>';
+    if(spent===0&&bud===0)return;
+    sumPlan+=bud;sumActual+=spent;
+    var diff=bud-spent;
+    var pct=bud>0?Math.min(Math.round(spent/bud*100),100):spent>0?100:0;
+    var barColor=bud>0&&spent>bud?'#E24B4A':c.color;
+    var diffClass=diff>0?'diff-ok':diff<0?'diff-over':'diff-zero';
+    var diffStr=diff>0?'+'+fmtPeso(diff):diff<0?fmtPeso(diff):'±₱0';
+    html+='<tr><td><div class="bud-cat-cell"><div class="bud-cat-ico" style="background:'+c.bg+'">'+c.icon+'</div><div class="bud-cat-name">'+c.label+'</div></div><div class="bud-bar-row"><div class="bud-bar-row-fill" style="width:'+pct+'%;background:'+barColor+'"></div></div></td>';
+    html+='<td style="color:var(--text2)">'+fmtPeso(bud)+'</td>';
+    html+='<td>'+fmtPeso(spent)+'</td>';
+    html+='<td class="'+diffClass+'">'+diffStr+'</td></tr>';
   });
+  var totalDiff=sumPlan-sumActual;
+  var totalDiffStr=totalDiff>0?'+'+fmtPeso(totalDiff):totalDiff<0?fmtPeso(totalDiff):'±₱0';
+  var totalDiffClass=totalDiff>0?'diff-ok':totalDiff<0?'diff-over':'diff-zero';
+  html+='<tr class="total-row"><td><div class="bud-cat-cell"><div style="width:28px;flex-shrink:0;"></div><div class="bud-cat-name">合計</div></div></td>';
+  html+='<td style="color:var(--text2)">'+fmtPeso(sumPlan)+'</td>';
+  html+='<td>'+fmtPeso(sumActual)+'</td>';
+  html+='<td class="'+totalDiffClass+'">'+totalDiffStr+'</td></tr>';
+  html+='</tbody></table>';
   document.getElementById('budgetList').innerHTML=html;
 }
 function openBudgetModal(){

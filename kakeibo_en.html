@@ -83,6 +83,30 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .budget-bar-bg{background:var(--bg);border-radius:3px;height:7px;}
 .budget-bar-fill{height:7px;border-radius:3px;}
 .edit-budget-btn{width:100%;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:10px;font-size:14px;font-family:inherit;cursor:pointer;color:var(--text);margin-top:8px;}
+/* Budget summary header */
+.bud-summary-hdr{background:var(--navy);padding:0 14px 16px;margin-bottom:0;}
+.bud-summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.bud-summary-box{background:rgba(255,255,255,0.1);border-radius:8px;padding:8px 10px;}
+.bud-summary-label{font-size:10px;color:#B5D4F4;margin-bottom:3px;}
+.bud-summary-val{font-size:14px;font-weight:600;color:#fff;}
+.bud-summary-val.ok{color:#9FE1CB;}
+.bud-summary-val.over{color:#F09595;}
+/* Budget table */
+.bud-tbl{width:100%;border-collapse:collapse;}
+.bud-tbl th{font-size:10px;font-weight:500;color:var(--text2);text-align:right;padding:0 4px 8px;}
+.bud-tbl th:first-child{text-align:left;padding-left:0;}
+.bud-tbl td{padding:8px 4px;border-top:0.5px solid var(--border);vertical-align:middle;}
+.bud-tbl td:first-child{padding-left:0;}
+.bud-tbl td:not(:first-child){text-align:right;font-size:12px;}
+.bud-tbl tr.total-row td{font-weight:600;border-top:1px solid var(--border);padding-top:10px;}
+.bud-cat-cell{display:flex;align-items:center;gap:7px;}
+.bud-cat-ico{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.bud-cat-name{font-size:12px;font-weight:500;color:var(--text);}
+.bud-bar-row{background:var(--bg);border-radius:2px;height:4px;margin-top:4px;}
+.bud-bar-row-fill{height:4px;border-radius:2px;}
+.diff-ok{color:var(--green);font-weight:500;}
+.diff-over{color:var(--red);font-weight:500;}
+.diff-zero{color:var(--text2);}
 .hist-actions-wrap{display:none;padding:0 0 10px;gap:8px;}
 .hist-actions-wrap.show{display:flex;}
 .action-btn{flex:1;padding:9px 0;border-radius:9px;font-size:13px;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px;font-weight:500;}
@@ -131,6 +155,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <span>Income <b id="headerIncome">₱0</b></span>
     <span>Expenses <b id="headerExpense">₱0</b></span>
   </div>
+  <div id="headerBudgetSub" style="display:none;"></div>
 </div>
 
 <!-- HOME -->
@@ -187,15 +212,31 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 </div>
 
 <!-- BUDGET -->
-<div class="screen" id="screen-budget">
-  <div class="total-budget-card">
-    <div><div class="total-budget-label">Monthly Total Budget</div><div class="total-budget-val" id="totalBudgetDisp">₱0</div></div>
-    <div id="totalBudgetBadge"></div>
+<div class="screen" id="screen-budget" style="padding:0 0 100px;">
+  <div class="bud-summary-hdr">
+    <div class="bud-summary-grid">
+      <div class="bud-summary-box">
+        <div class="bud-summary-label">Planned</div>
+        <div class="bud-summary-val" id="budPlanTotal">₱0</div>
+      </div>
+      <div class="bud-summary-box">
+        <div class="bud-summary-label">Actual</div>
+        <div class="bud-summary-val" id="budActualTotal">₱0</div>
+      </div>
+      <div class="bud-summary-box">
+        <div class="bud-summary-label">Difference</div>
+        <div class="bud-summary-val" id="budDiffTotal">₱0</div>
+      </div>
+    </div>
   </div>
-  <div class="card">
-    <div class="card-title">Budget by Category</div>
-    <div id="budgetList"></div>
-    <button class="edit-budget-btn" onclick="openBudgetModal()">Edit Budget</button>
+  <div style="padding:12px 12px 0;">
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <div class="card-title" style="margin-bottom:0;">Plan vs Actual by Category</div>
+      </div>
+      <div id="budgetList"></div>
+      <button class="edit-budget-btn" onclick="openBudgetModal()">Edit Budget</button>
+    </div>
   </div>
 </div>
 
