@@ -447,7 +447,7 @@ function updateHeader(){
   var inc=mr.filter(function(r){return r.type==='income';}).reduce(function(a,r){return a+r.amount;},0);
   var exp=mr.filter(function(r){return r.type==='expense';}).reduce(function(a,r){return a+r.amount;},0);
   var bal=inc-exp;
-  document.getElementById('headerMonth').textContent=ym.y+'/'+(ym.m<10?'0'+ym.m:ym.m)+'/'+ym.y+' Summary';
+  var MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];document.getElementById('headerMonth').textContent=MONTHS[ym.m-1]+' '+ym.y+' Summary';
   document.getElementById('headerBalance').textContent=(bal>=0?'+':'-')+fmtPeso(Math.abs(bal));
   document.getElementById('headerIncome').textContent=fmtPeso(inc);
   document.getElementById('headerExpense').textContent=fmtPeso(exp);
@@ -559,17 +559,40 @@ function updateDonut(){
 function renderBudget(){
   var ym=currentYM(),records=loadData();
   var mr=records.filter(function(r){var d=new Date(r.date);return d.getFullYear()===ym.y&&(d.getMonth()+1)===ym.m&&r.type==='expense';});
-  var budget=loadBudget(),tExp=mr.reduce(function(a,r){return a+r.amount;},0),tBud=budget.total||0;
-  document.getElementById('totalBudgetDisp').textContent=fmtPeso(tBud);
-  var left=tBud-tExp,badge=document.getElementById('totalBudgetBadge');
-  badge.innerHTML=tBud>0?'<span class="badge '+(left>=0?'badge-ok':'badge-over')+'">'+(left>=0?'Left: '+fmtPeso(left):'Over: '+fmtPeso(Math.abs(left)))+'</span>':'';
-  var html='';
+  var b=loadBudget();
+  var tBud=b.total||0;
+  var tExp=mr.reduce(function(a,r){return a+r.amount;},0);
+  var tDiff=tBud-tExp;
+  document.getElementById('budPlanTotal').textContent=fmtPeso(tBud);
+  document.getElementById('budActualTotal').textContent=fmtPeso(tExp);
+  var diffEl=document.getElementById('budDiffTotal');
+  diffEl.textContent=(tDiff>=0?'+':'')+fmtPeso(tDiff);
+  diffEl.className='bud-summary-val'+(tBud===0?'':tDiff>=0?' ok':' over');
+  var html='<table class="bud-tbl"><thead><tr><th style="width:40%">Category</th><th>Planned</th><th>Actual</th><th>Diff</th></tr></thead><tbody>';
+  var sumPlan=0,sumActual=0;
   getAllCats().forEach(function(c){
     var spent=mr.filter(function(r){return r.cat===c.id;}).reduce(function(a,r){return a+r.amount;},0);
-    var bud=budget.cats&&budget.cats[c.id]?budget.cats[c.id]:0;
-    var pct=bud>0?Math.min(Math.round(spent/bud*100),100):0,over=bud>0&&spent>bud;
-    html+='<div class="budget-item"><div class="budget-row"><span class="budget-name">'+c.icon+' '+c.label+'</span><span class="budget-nums'+(over?' over':'')+'">'+fmtPeso(spent)+' / '+fmtPeso(bud)+(over?' ⚠':'')+'</span></div><div class="budget-bar-bg"><div class="budget-bar-fill" style="width:'+pct+'%;background:'+c.color+'"></div></div></div>';
+    var bud=b.cats&&b.cats[c.id]?b.cats[c.id]:0;
+    if(spent===0&&bud===0)return;
+    sumPlan+=bud;sumActual+=spent;
+    var diff=bud-spent;
+    var pct=bud>0?Math.min(Math.round(spent/bud*100),100):spent>0?100:0;
+    var barColor=bud>0&&spent>bud?'#E24B4A':c.color;
+    var diffClass=diff>0?'diff-ok':diff<0?'diff-over':'diff-zero';
+    var diffStr=diff>0?'+'+fmtPeso(diff):diff<0?fmtPeso(diff):'±₱0';
+    html+='<tr><td><div class="bud-cat-cell"><div class="bud-cat-ico" style="background:'+c.bg+'">'+c.icon+'</div><div class="bud-cat-name">'+c.label+'</div></div><div class="bud-bar-row"><div class="bud-bar-row-fill" style="width:'+pct+'%;background:'+barColor+'"></div></div></td>';
+    html+='<td style="color:var(--text2)">'+fmtPeso(bud)+'</td>';
+    html+='<td>'+fmtPeso(spent)+'</td>';
+    html+='<td class="'+diffClass+'">'+diffStr+'</td></tr>';
   });
+  var totalDiff=sumPlan-sumActual;
+  var totalDiffStr=totalDiff>0?'+'+fmtPeso(totalDiff):totalDiff<0?fmtPeso(totalDiff):'±₱0';
+  var totalDiffClass=totalDiff>0?'diff-ok':totalDiff<0?'diff-over':'diff-zero';
+  html+='<tr class="total-row"><td><div class="bud-cat-cell"><div style="width:28px;flex-shrink:0;"></div><div class="bud-cat-name">Total</div></div></td>';
+  html+='<td style="color:var(--text2)">'+fmtPeso(sumPlan)+'</td>';
+  html+='<td>'+fmtPeso(sumActual)+'</td>';
+  html+='<td class="'+totalDiffClass+'">'+totalDiffStr+'</td></tr>';
+  html+='</tbody></table>';
   document.getElementById('budgetList').innerHTML=html;
 }
 function openBudgetModal(){
